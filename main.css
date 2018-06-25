@@ -5,3 +5,7 @@ body {
 .input-card {
   margin: 100px auto 0 auto;
 }
+
+#results {
+  color: white;
+}
