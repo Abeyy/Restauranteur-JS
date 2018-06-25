@@ -1,3 +1,7 @@
 body {
   background: url('./assets/backgroundImages/simpleCooking.jpg') no-repeat fixed center;
 }
+
+.input-card {
+  margin: 100px auto 0 auto;
+}
