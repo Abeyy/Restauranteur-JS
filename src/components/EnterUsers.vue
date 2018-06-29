@@ -28,7 +28,7 @@ export default {
   .enter-users-screen {
     text-align: center;
     background: url('../assets/simpleCooking.jpg');
-    height: 100vh;
+    min-height: 100%;
   }
 
   .enter-user-title {
