@@ -6,9 +6,12 @@
       <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
       <div class="card-body">
         <h5 class="card-title">Enter Diner Names:</h5>
-        <input type="text" name="User" placeholder="Enter User Name here">
+
+        <span class="user-display"> {{userList}} </span>
+        <input v-for="(user, index) in inputLength" v-on:change="updateUserList($event)" type="text" name="User" placeholder="Enter User Name here">
+
         <a href="#" class="btn btn-primary">Continue</a>
-        {{ user_amt }}
+
       </div>
     </div>
   </div>
@@ -18,7 +21,20 @@
 export default {
   data() {
     return {
-      user_amt: 0
+      user_amt: 0,
+      inputLength: 1,
+      userList: []
+    }
+  },
+  computed: {
+
+  },
+  methods: {
+    updateUserList($event) {
+      let newUser = $event.srcElement.value
+      this.userList.push(newUser)
+      this.inputLength++
+
     }
   }
 }
@@ -28,7 +44,8 @@ export default {
   .enter-users-screen {
     text-align: center;
     background: url('../assets/simpleCooking.jpg');
-    min-height: 100%;
+    /* TODO: Change this up.  */
+    min-height: 100vh;
   }
 
   .enter-user-title {
