@@ -13,7 +13,9 @@
                  v-show="!hiddenIndex.includes(index)"
                  type="text" name="User" :key="index" placeholder="Enter User Name here">
           <!-- TODO: Turn this into  -->
-          <span v-show="hiddenIndex.includes(index)"> V </span>
+          <!-- <span v-show="hiddenIndex.includes(index)" class="arrow-container">  -->
+            <i class="fas fa-angle-down"></i>
+          <!-- </span> -->
         </div>
 
         <a href="#" class="btn btn-primary">Continue</a>
@@ -72,5 +74,15 @@ export default {
     margin-right: auto;
   }
 
+  .arrow-container {
+    position: relative;
+  }
+
+  i {
+    font-size: 20px;
+    position: absolute;
+    right: 30px;
+    bottom: 3px;
+  }
 
 </style>
