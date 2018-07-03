@@ -12,10 +12,9 @@
           <input v-on:change="updateUserList($event, index)"
                  v-show="!hiddenIndex.includes(index)"
                  type="text" name="User" :key="index" placeholder="Enter User Name here">
-          <!-- TODO: Turn this into  -->
-          <!-- <span v-show="hiddenIndex.includes(index)" class="arrow-container">  -->
-            <i class="fas fa-angle-down"></i>
-          <!-- </span> -->
+            <i v-show="hiddenIndex.includes(index)" class="fas fa-angle-down"
+               @click="removeIndex(index)">
+            </i>
         </div>
 
         <a href="#" class="btn btn-primary">Continue</a>
@@ -52,6 +51,12 @@ export default {
 
       this.inputLength++
 
+    },
+    removeIndex(index) {
+      let indexVal = this.hiddenIndex.indexOf(index)
+      if (indexVal != undefined) {
+        this.hiddenIndex.splice(indexVal, 1)
+      }
     }
   }
 }
@@ -75,6 +80,10 @@ export default {
   }
 
   .arrow-container {
+    position: relative;
+  }
+
+  .user-inputs {
     position: relative;
   }
 
