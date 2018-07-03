@@ -7,8 +7,14 @@
       <div class="card-body">
         <h5 class="card-title">Enter Diner Names:</h5>
 
-        <span class="user-display"> {{userList}} </span>
-        <input v-for="(user, index) in inputLength" v-on:change="updateUserList($event)" type="text" name="User" placeholder="Enter User Name here">
+        <div class="user-inputs" v-for="(user, index) in inputLength">
+          <span class="user-display"> {{userList[index]}} </span>
+          <input v-on:change="updateUserList($event, index)"
+                 v-show="!hiddenIndex.includes(index)"
+                 type="text" name="User" :key="index" placeholder="Enter User Name here">
+          <!-- TODO: Turn this into  -->
+          <span v-show="hiddenIndex.includes(index)"> V </span>
+        </div>
 
         <a href="#" class="btn btn-primary">Continue</a>
 
@@ -23,6 +29,7 @@ export default {
     return {
       user_amt: 0,
       inputLength: 1,
+      hiddenIndex: [],
       userList: []
     }
   },
@@ -30,9 +37,17 @@ export default {
 
   },
   methods: {
-    updateUserList($event) {
+    updateUserList($event, index) {
       let newUser = $event.srcElement.value
-      this.userList.push(newUser)
+
+      if (this.userList[index]) {
+        this.userList[index] = newUser
+      } else {
+        this.userList.push(newUser)
+      }
+
+      this.hiddenIndex.push(index)
+
       this.inputLength++
 
     }
