@@ -18,9 +18,9 @@
             </i>
         </div>
 
-        <a v-on:click="submitUsers()"
+        <button v-on:click="submitUsers()"
            v-show="userList.length > 0"
-          class="btn btn-primary"> Continue</a>
+          class="btn btn-success submit-user-btn"> Continue</button>
       </div>
     </div>
   </div>
@@ -98,6 +98,11 @@ export default {
     position: absolute;
     right: 30px;
     bottom: 3px;
+  }
+
+  .submit-user-btn {
+    color: white;
+    margin: 5px;
   }
 
 </style>
