@@ -18,8 +18,9 @@
             </i>
         </div>
 
-        <a href="#" class="btn btn-primary">Continue</a>
-        {{ something }}
+        <a v-on:click="submitUsers()"
+           v-show="userList.length > 0"
+          class="btn btn-primary"> Continue</a>
       </div>
     </div>
   </div>
@@ -58,6 +59,10 @@ export default {
       if (indexVal != undefined) {
         this.hiddenIndex.splice(indexVal, 1)
       }
+    },
+    submitUsers() {
+      this.$store.commit("updateUserList", this.userList)
+      this.$store.commit("goToNextView")
     }
   }
 }

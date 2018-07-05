@@ -5,11 +5,18 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    count: 0
+    userList: [],
+    views: ['enterUsers', 'enterOrders'],
+    currentView: 'enterUsers'
   },
   mutations: {
-    increment (state) {
-      state.count++
+    updateUserList (state, newList) {
+      state.userList = newList
+    },
+    goToNextView (state) {
+      let index = state.views.indexOf(state.currentView)
+      index++
+      state.currentView = state.views[index]
     }
   }
 })
