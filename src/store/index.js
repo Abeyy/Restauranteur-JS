@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     userList: [],
-    views: ['enterUsers', 'enterOrders'],
+    views: ['enterUsers', 'orderedItems'],
     currentView: 'enterUsers'
   },
   mutations: {
