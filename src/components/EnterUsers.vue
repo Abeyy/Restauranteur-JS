@@ -17,9 +17,9 @@
                @click="removeIndex(index)">
             </i>
         </div>
-        {{ userList }}
-        <a href="#" class="btn btn-primary">Continue</a>
 
+        <a href="#" class="btn btn-primary">Continue</a>
+        {{ something }}
       </div>
     </div>
   </div>
@@ -36,7 +36,9 @@ export default {
     }
   },
   computed: {
-
+    something() {
+      return this.$store.state.count
+    }
   },
   methods: {
     updateUserList($event, index) {
