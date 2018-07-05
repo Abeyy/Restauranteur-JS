@@ -10,13 +10,14 @@
         <div class="user-inputs" v-for="(user, index) in inputLength">
           <span class="user-display"> {{userList[index]}} </span>
           <input v-on:change="updateUserList($event, index)"
+                 v-on:keyup.enter="updateUserList($event, index)"
                  v-show="!hiddenIndex.includes(index)"
                  type="text" name="User" :key="index" placeholder="Enter User Name here">
             <i v-show="hiddenIndex.includes(index)" class="fas fa-angle-down"
                @click="removeIndex(index)">
             </i>
         </div>
-
+        {{ userList }}
         <a href="#" class="btn btn-primary">Continue</a>
 
       </div>
@@ -45,12 +46,10 @@ export default {
         this.userList[index] = newUser
       } else {
         this.userList.push(newUser)
+        this.inputLength++
       }
 
       this.hiddenIndex.push(index)
-
-      this.inputLength++
-
     },
     removeIndex(index) {
       let indexVal = this.hiddenIndex.indexOf(index)
